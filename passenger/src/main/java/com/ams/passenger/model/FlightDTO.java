@@ -1,47 +1,18 @@
-package com.ams.admin.model;
+package com.ams.passenger.model;
 
 import java.time.LocalTime;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+public class FlightDTO {
 
-@Entity
-@Table(name="flights")
-public class Flight {
-	
-	@Id
 	public int flight_Id;
-	@Column
 	public int airline_Id;
-	@Column
 	public String airline_name;
-	@Column
 	public String from_location;
-	@Column
 	public String to_location;
-	@Column
 	public LocalTime depature_time;
-	@Column
 	public LocalTime arrival_time;
-	@Column
 	public LocalTime duration;
-	@Column
 	public int total_seats;
-	public Flight(int flight_Id, int airlinr_Id, String airline_name, String from_location, String to_location,
-			LocalTime depature_time, LocalTime arrival_time, LocalTime duration, int total_seats) {
-		super();
-		this.flight_Id = flight_Id;
-		this.airline_Id = airlinr_Id;
-		this.airline_name = airline_name;
-		this.from_location = from_location;
-		this.to_location = to_location;
-		this.depature_time = depature_time;
-		this.arrival_time = arrival_time;
-		this.duration = duration;
-		this.total_seats = total_seats;
-	}
 	public int getFlight_Id() {
 		return flight_Id;
 	}
@@ -96,10 +67,22 @@ public class Flight {
 	public void setTotal_seats(int total_seats) {
 		this.total_seats = total_seats;
 	}
-	public Flight() {
+	
+	public FlightDTO() {
 		// TODO Auto-generated constructor stub
 	}
+	public FlightDTO(int flight_Id, int airline_Id, String airline_name, String from_location, String to_location,
+			LocalTime depature_time, LocalTime arrival_time, LocalTime duration, int total_seats) {
+		super();
+		this.flight_Id = flight_Id;
+		this.airline_Id = airline_Id;
+		this.airline_name = airline_name;
+		this.from_location = from_location;
+		this.to_location = to_location;
+		this.depature_time = depature_time;
+		this.arrival_time = arrival_time;
+		this.duration = duration;
+		this.total_seats = total_seats;
+	}
 	
-	
-
 }

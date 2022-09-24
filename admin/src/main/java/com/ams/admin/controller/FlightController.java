@@ -32,7 +32,7 @@ public class FlightController {
 		return service.getFlightById(flight_id);
 	}
 	
-	@GetMapping("flights/getFlights/{to}/{from}")
+	@GetMapping("/getFlights/{to}/{from}")
 	public List<Flight> getFlights(@PathVariable("to") String to,@PathVariable("from") String from){
 		return service.getFlights(to, from);
 	}

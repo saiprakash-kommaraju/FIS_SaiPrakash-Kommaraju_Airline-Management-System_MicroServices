@@ -2,6 +2,7 @@ package com.ams.admin.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,7 +23,8 @@ public class FlightServiceImpl implements FlightService {
 	
 	@Override
 	public Flight getFlightById(int flight_id) {
-		return repo.getById(flight_id);
+		Optional<Flight> flight=repo.findById(flight_id);
+		return flight.get();
 	}
 
 	@Override
@@ -63,7 +65,7 @@ public class FlightServiceImpl implements FlightService {
 	public List<Flight> getFlights(String to, String from) {
 		List<Flight> l=new ArrayList<Flight>();
 		for(Flight f:repo.findAll()) {
-			if(f.getFrom_location()==from && f.getTo_location()==to) {
+			if(f.getFrom_location().equals(from) && f.getTo_location().equals(to)) {
 				l.add(f);
 			}
 		}

@@ -1,8 +1,12 @@
 package com.ams.passenger.service;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ams.passenger.model.FlightDTO;
 import com.ams.passenger.model.Passenger;
 import com.ams.passenger.repo.PassengerRepository;
 
@@ -11,10 +15,14 @@ public class PassengerServiceImpl implements PassengerService {
 	
 	@Autowired
 	PassengerRepository repo;
+	
+	@Autowired
+	FeignProxy proxy;
 
 	@Override
 	public Passenger getProfile(int profile_id) {
-		return repo.getById(profile_id);
+		Optional<Passenger> passenger=repo.findById(profile_id);
+		return passenger.get();
 	}
 
 	@Override
@@ -33,7 +41,12 @@ public class PassengerServiceImpl implements PassengerService {
 	@Override
 	public String deletePassenger(int passenger_id) {
 		repo.deleteById(passenger_id);
-		return "Flight cancelled!";
+		return "User deleted!";
+	}
+	
+	@Override
+	public List<FlightDTO> getFlights(String to,String from){
+		return proxy.getFlights(to, from);
 	}
 
 }

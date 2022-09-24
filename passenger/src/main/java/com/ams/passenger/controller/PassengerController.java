@@ -1,5 +1,7 @@
 package com.ams.passenger.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ams.passenger.model.FlightDTO;
 import com.ams.passenger.model.Passenger;
 import com.ams.passenger.service.PassengerService;
 
@@ -40,4 +43,8 @@ public class PassengerController {
 		return service.deletePassenger(passenger_id);
 	}
 
+	@GetMapping("/getFlights/{to}/{from}")
+	public List<FlightDTO> getFlights(@PathVariable("to") String to,@PathVariable("from") String from){
+		return service.getFlights(to, from);
+	}
 }

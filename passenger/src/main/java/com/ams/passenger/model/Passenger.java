@@ -97,4 +97,7 @@ public class Passenger {
 		this.mobile_numbe = mobile_numbe;
 		this.email_id = email_id;
 	}
+public Passenger() {
+	// TODO Auto-generated constructor stub
+}	
 }
